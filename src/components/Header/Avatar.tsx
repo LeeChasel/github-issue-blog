@@ -1,10 +1,12 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Icons } from "@/components/Icons";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export const AvatarLabel = () => {
+  const user = useCurrentUser();
   return (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="user avatar" />
+      <AvatarImage src={user?.image || ""} alt={`${user?.name}'s avatar`} />
       <AvatarFallback>
         <Icons.Avatar className="h-full w-full" />
       </AvatarFallback>
