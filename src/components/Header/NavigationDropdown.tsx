@@ -15,6 +15,7 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { Button } from "@/components/ui/button";
 import { logout } from "@/actions/logout";
 import { login } from "@/actions/login";
+import { Icons } from "../Icons";
 
 export const NavigationDropdown = () => {
   const user = useCurrentUser();
@@ -32,7 +33,7 @@ export const NavigationDropdown = () => {
             <AvatarLabel />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4">
+            <ul className="grid gap-2 p-2">
               {user ? (
                 <>
                   <li>
@@ -51,8 +52,9 @@ export const NavigationDropdown = () => {
               ) : (
                 <li>
                   <NavigationMenuLink>
-                    <Button onClick={onLogin} variant="ghost">
-                      登入
+                    <Button onClick={onLogin} variant="ghost" className="gap-2">
+                      <Icons.Github className="size-5" />
+                      Github登入
                     </Button>
                   </NavigationMenuLink>
                 </li>
