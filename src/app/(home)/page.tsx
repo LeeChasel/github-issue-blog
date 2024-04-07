@@ -1,6 +1,6 @@
 import { currentToken } from "@/lib/auth";
 import { getPosts } from "@/app/(posts)/services";
-import { Posts } from "@/app/(posts)/_components/Posts";
+import { InfiniteScrollPosts } from "@/app/(posts)/_components/InfiniteScrollPosts";
 
 export default async function Home() {
   const token = await currentToken();
@@ -9,8 +9,8 @@ export default async function Home() {
   }
   const posts = await getPosts(token);
   return (
-    <div>
-      <Posts posts={posts} />
-    </div>
+    <>
+      <InfiniteScrollPosts token={token} initialPosts={posts} />;
+    </>
   );
 }
