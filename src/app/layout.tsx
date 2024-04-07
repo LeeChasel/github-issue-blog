@@ -5,12 +5,14 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/Header";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import { UnAuthorized } from "@/components/UnAuthorized";
+import { env } from "@/env";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Github Issue Blog",
-  description: "A blog can browse Github issues.",
+  title: `${env.REPO_OWNER}'s Blog`,
+  description: "A blog powered by GitHub Issues.",
 };
 
 export default async function RootLayout({
@@ -19,12 +21,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
+  // If the user is not logged in, show the unauthorized page.
+  const content = session?.token ? children : <UnAuthorized />;
   return (
     <html lang="zh-tw">
       <SessionProvider session={session}>
-        <body className={cn(inter.className, "min-h-screen")}>
+        <body className={cn(inter.className, "mx-4 min-h-screen space-y-4 py-3 md:mx-6 md:py-6")}>
           <Header />
-          {children}
+          {content}
         </body>
       </SessionProvider>
     </html>
