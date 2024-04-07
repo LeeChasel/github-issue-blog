@@ -26,7 +26,7 @@ export default async function RootLayout({
   return (
     <html lang="zh-tw">
       <SessionProvider session={session} refetchOnWindowFocus={false}>
-        <body className={cn(inter.className, "mx-4 min-h-screen space-y-4 py-3 md:mx-6 md:py-6")}>
+        <body className={cn(inter.className, "mx-4 min-h-screen space-y-6 py-3 md:mx-6 md:py-6")}>
           <Header />
           {content}
         </body>

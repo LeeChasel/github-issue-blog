@@ -7,8 +7,8 @@ type PostProps = {
 };
 
 export function Post({ post }: PostProps) {
-  const { title, created_at, updated_at } = post;
-  const href = `/post/${title}`;
+  const { title, created_at, updated_at, number } = post;
+  const href = `/post/${number}`;
   const postDate = formatDateString(new Date(created_at));
   const updatedDate = formatDateString(new Date(updated_at));
   const isShowUpdated = postDate !== updatedDate;

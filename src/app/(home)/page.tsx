@@ -10,7 +10,7 @@ export default async function Home() {
   const posts = await getPosts(token);
   return (
     <>
-      <InfiniteScrollPosts token={token} initialPosts={posts} />;
+      <InfiniteScrollPosts token={token} initialPosts={posts} />
     </>
   );
 }

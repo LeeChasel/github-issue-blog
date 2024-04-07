@@ -8,7 +8,6 @@ export const env = createEnv({
     AUTH_GITHUB_ID: z.string().min(1, "AUTH_GITHUB_ID is required"),
     AUTH_GITHUB_SECRET: z.string().min(1, "AUTH_GITHUB_SECRET is required"),
     AUTH_SECRET: z.string().min(1, "AUTH_SECRET is required"),
-    // AUTH_URL: z.string().min(1, "AUTH_URL is required"),
   },
   // Only need to destructure client variables
   experimental__runtimeEnv: {},

@@ -1,3 +1,5 @@
+import { User } from "@/types";
+
 /**
  * Github issue type, only the necessary fields are defined.
  */
@@ -9,17 +11,7 @@ export type Post = {
   id: number;
   number: number;
   title: string;
-  user: {
-    login: string;
-    id: number;
-    node_id: string;
-    avatar_url: string;
-    gravatar_id: string;
-    url: string;
-    html_url: string;
-    type: string;
-    site_admin: boolean;
-  };
+  user: User;
   state: string;
   comments: number;
   created_at: string;

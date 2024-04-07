@@ -14,3 +14,9 @@ export const getPosts = async (token: string | undefined, page = 1, pageSize = 1
   const response = await fetchGithub(token, url);
   return response.json();
 };
+
+export const getPost = async (token: string | undefined, postNumber: string): Promise<Post> => {
+  const url = `${repoIssuesPath}/${postNumber}`;
+  const response = await fetchGithub(token, url);
+  return response.json();
+};

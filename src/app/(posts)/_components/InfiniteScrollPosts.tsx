@@ -14,19 +14,17 @@ export const InfiniteScrollPosts = ({ token, initialPosts }: InfiniteScrollProps
   const { posts, hasMore, ref } = useInfiniteScroll(token, initialPosts);
 
   return (
-    <>
-      <div className="mx-4 space-y-3 md:mx-6">
-        {posts.map((post) => (
-          <Post key={post.id} post={post} />
-        ))}
+    <div className="mx-4 space-y-3 md:mx-6">
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
 
-        {/* Display Skeleton when loading more posts */}
-        {hasMore && (
-          <div ref={ref}>
-            <SkeletonPosts amount={3} />
-          </div>
-        )}
-      </div>
-    </>
+      {/* Display Skeleton when loading more posts */}
+      {hasMore && (
+        <div ref={ref}>
+          <SkeletonPosts amount={3} />
+        </div>
+      )}
+    </div>
   );
 };
