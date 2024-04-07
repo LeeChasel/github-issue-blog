@@ -25,7 +25,7 @@ export default async function RootLayout({
   const content = session?.token ? children : <UnAuthorized />;
   return (
     <html lang="zh-tw">
-      <SessionProvider session={session}>
+      <SessionProvider session={session} refetchOnWindowFocus={false}>
         <body className={cn(inter.className, "mx-4 min-h-screen space-y-4 py-3 md:mx-6 md:py-6")}>
           <Header />
           {content}
