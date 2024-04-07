@@ -1,11 +1,10 @@
-import NextAuth from "next-auth";
+import NextAuth, { DefaultSession } from "next-auth";
 import { type DefaultJWT } from "next-auth/jwt";
 
-// will automatically be merged with the DefaultSession interface
 declare module "next-auth" {
   interface Session {
     token?: string;
-    user: {
+    user: DefaultSession["user"] & {
       username?: string;
     };
   }

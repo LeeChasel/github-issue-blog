@@ -13,9 +13,8 @@ import {
 import { AvatarLabel } from "./Avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Button } from "@/components/ui/button";
-import { logout } from "@/actions/logout";
-import { login } from "@/actions/login";
 import { Icons } from "../Icons";
+import { login, logout } from "@/app/(auth)/actions";
 
 export const NavigationDropdown = () => {
   const user = useCurrentUser();
