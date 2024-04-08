@@ -12,7 +12,7 @@ export type Post = {
   number: number;
   title: string;
   user: User;
-  state: string;
+  state: "open" | "closed";
   comments: number;
   created_at: string;
   updated_at: string;

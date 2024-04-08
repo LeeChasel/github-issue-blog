@@ -32,4 +32,25 @@ export const createPost = async (token: string | undefined, postData: z.infer<ty
   return response.json();
 };
 
-// export const updatePost = async (token: string | undefined, postNumber: string, postData: z.infer<typeof postSchema>): Promise<Post> => {
+export const updatePost = async (
+  token: string | undefined,
+  postNumber: string,
+  postData: z.infer<typeof postSchema>,
+): Promise<Post> => {
+  const url = `${repoIssuesPath}/${postNumber}`;
+  const response = await fetchGithub(token, url, {
+    method: "PATCH",
+    body: JSON.stringify(postData),
+  });
+  return response.json();
+};
+
+export const deletePost = async (token: string | undefined, postNumber: string): Promise<Post> => {
+  const url = `${repoIssuesPath}/${postNumber}`;
+  const state = "closed";
+  const response = await fetchGithub(token, url, {
+    method: "PATCH",
+    body: JSON.stringify({ state }),
+  });
+  return response.json();
+};

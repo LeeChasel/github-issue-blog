@@ -13,9 +13,9 @@ export const AddPost = () => {
   const { toast } = useToast();
   const router = useRouter();
   const onSubmit = async (value: z.infer<typeof postSchema>) => {
-    const res = await createPostAction(token, value);
-    toast({ description: "新增文章成功" });
-    router.push(`/post/${res.number}`);
+    const post = await createPostAction(token, value);
+    toast({ description: `成功新增文章 - ${post.title}` });
+    router.push(`/post/${post.number}`);
   };
 
   return <PostModal triggerBtnLabel="新增文章" title="新增文章" actionBtnLabel="確定新增" onSubmit={onSubmit} />;
