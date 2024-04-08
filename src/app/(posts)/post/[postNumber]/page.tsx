@@ -8,6 +8,7 @@ import { PostContainer } from "./_components/PostContainer";
 import { PostBody } from "./_components/PostBody";
 import { PostComments } from "./_components/PostComments";
 import { DeletePost } from "./_components/DeletePost";
+import { UpdatePost } from "./_components/UpdatePost";
 
 type Params = {
   params: { postNumber: string };
@@ -32,8 +33,9 @@ export default async function PostPage({ params }: Params) {
   return (
     <div className="mx-4 flex flex-col space-y-3 md:mx-6">
       {isowner && (
-        <div className="self-start">
+        <div className="space-x-4">
           <DeletePost postNumber={number} />
+          <UpdatePost post={post} postNumber={number} />
         </div>
       )}
       <PostContainer>

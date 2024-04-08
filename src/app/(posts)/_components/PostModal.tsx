@@ -39,7 +39,6 @@ export const PostModal = ({
 
   const handleSubmitForm = async (values: PostFormValues) => {
     await onSubmit(values);
-    form.reset();
   };
 
   return (
