@@ -9,6 +9,7 @@ import { PostBody } from "./_components/PostBody";
 import { PostComments } from "./_components/PostComments";
 import { DeletePost } from "./_components/DeletePost";
 import { UpdatePost } from "./_components/UpdatePost";
+import { notFound } from "next/navigation";
 
 type Params = {
   params: { postNumber: string };
@@ -28,6 +29,11 @@ export default async function PostPage({ params }: Params) {
   const postPromise = getPost(token, number);
   const commentsPromise = getComments(token, number);
   const [post, comments] = await Promise.all([postPromise, commentsPromise]);
+
+  // If the post is not found, return a 404 page
+  if (!post.title) {
+    return notFound();
+  }
   const hasComments = comments.length > 0;
   const isowner = await isOwner();
   return (
