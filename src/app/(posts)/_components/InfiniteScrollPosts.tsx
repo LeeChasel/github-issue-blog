@@ -14,7 +14,7 @@ export const InfiniteScrollPosts = ({ token, initialPosts }: InfiniteScrollProps
   const { posts, hasMore, ref } = useInfiniteScroll(token, initialPosts);
 
   return (
-    <div className="mx-4 space-y-3 md:mx-6">
+    <div className="space-y-3">
       {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}

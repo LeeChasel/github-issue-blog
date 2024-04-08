@@ -4,3 +4,8 @@ export const useCurrentUser = () => {
   const session = useSession();
   return session.data?.user;
 };
+
+export const useCurrentToken = () => {
+  const session = useSession();
+  return session.data?.token;
+};

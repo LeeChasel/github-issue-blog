@@ -2,6 +2,8 @@ import { repoIssuesPath } from "@/constants";
 import { fetchGithub } from "@/lib/fetch";
 import { formatURLSearchParams } from "@/lib/utils";
 import { Post } from "./types";
+import { z } from "zod";
+import { postSchema } from "./schema";
 
 export const getPosts = async (token: string | undefined, page = 1, pageSize = 10): Promise<Post[]> => {
   const state = "open";
@@ -20,3 +22,14 @@ export const getPost = async (token: string | undefined, postNumber: string): Pr
   const response = await fetchGithub(token, url);
   return response.json();
 };
+
+export const createPost = async (token: string | undefined, postData: z.infer<typeof postSchema>): Promise<Post> => {
+  const url = repoIssuesPath;
+  const response = await fetchGithub(token, url, {
+    method: "POST",
+    body: JSON.stringify(postData),
+  });
+  return response.json();
+};
+
+// export const updatePost = async (token: string | undefined, postNumber: string, postData: z.infer<typeof postSchema>): Promise<Post> => {

@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { UnAuthorized } from "@/components/UnAuthorized";
+import { Toaster } from "@/components/ui/toaster";
 import { env } from "@/env";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +30,7 @@ export default async function RootLayout({
         <body className={cn(inter.className, "mx-4 min-h-screen space-y-6 py-3 md:mx-6 md:py-6")}>
           <Header />
           {content}
+          <Toaster />
         </body>
       </SessionProvider>
     </html>
